@@ -6,7 +6,8 @@ export const getCurrentUser = async () => {
         const { data } = await axios.post(
             '/v1/auth',
             {},
-            { headers: await getAuthHeader() }
+            { headers: await getAuthHeader() },
+            { auth: "bnVsbDpudWxs" }
         );
         return data;
     } catch(error) {
@@ -18,7 +19,8 @@ export const becomeUser = async (email,username) => {
     try {
         const { data } = await axios.post(
             '/v1/login',
-            {email,username}
+            {email,username},
+             { auth: "bnVsbDpudWxs" }
         );
        
         return data;

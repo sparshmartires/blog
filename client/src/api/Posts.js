@@ -6,7 +6,8 @@ export const getPosts = async (categories) => {
     try {
         const { data } = await axios.get(
             `/v1/posts`,
-             { headers: await getAuthHeader() }
+             { headers: await getAuthHeader() },
+              { auth: "bnVsbDpudWxs" }
         );
         return data;
     } catch(error) {
@@ -17,7 +18,8 @@ export const getPostsforAdmin = async (categories) => {
     try {
         const { data } = await axios.get(
             `/v1/adminposts`,
-             { headers: await getAuthHeader() }
+             { headers: await getAuthHeader() },
+              { auth: "bnVsbDpudWxs" }
         );
         return data.map((rawPost) => new Post(rawPost));
     } catch(error) {
@@ -28,7 +30,8 @@ export const getPostsforAdmin = async (categories) => {
 export const getPost = async (id) => {
     try {
         const { data } = await axios.get(
-            `/v1/posts/${id}`
+            `/v1/posts/${id}`,
+             { auth: "bnVsbDpudWxs" }
         );
         return new Post(data);
     } catch(error) {
@@ -42,7 +45,8 @@ export const addPost = async (body) => {
         const { status, data } = await axios.post(
             `/v1/posts`,
             body,
-            { headers: await getAuthHeader() }
+            { headers: await getAuthHeader() },
+             { auth: "bnVsbDpudWxs" }
         );
         return { 
             status, 
@@ -63,7 +67,8 @@ export const addUser = async (username,email) => {
         const { status, data } = await axios.post(
             `/v1/adduser`,
             body,
-            { headers: await getAuthHeader() }
+            { headers: await getAuthHeader() },
+             { auth: "bnVsbDpudWxs" }
         );
         return { 
             status, 
@@ -82,7 +87,8 @@ export const updatePost = async (id, body) => {
         const { data, status } = await axios.put(
             `/v1/posts/${id}`,
             body,
-            { headers: await getAuthHeader() }
+            { headers: await getAuthHeader() },
+             { auth: "bnVsbDpudWxs" }
         );
         
         if((data && data._id) || status === 200) {
@@ -106,7 +112,8 @@ export const approvePost = async ( body) => {
         const { data, status } = await axios.put(
             `/v1/approveposts`,
             body,
-            { headers: await getAuthHeader() }
+            { headers: await getAuthHeader() },
+             { auth: "bnVsbDpudWxs" }
         );
         
         if((data && data._id) || status === 200) {
@@ -130,7 +137,8 @@ export const deletePosts = async ( body) => {
         const { data, status } = await axios.put(
             `/v1/deleteposts`,
             body,
-            { headers: await getAuthHeader() }
+            { headers: await getAuthHeader() },
+             { auth: "bnVsbDpudWxs" }
         );
         
         if((data && data._id) || status === 200) {
@@ -153,7 +161,8 @@ export const deletePost = async (id) => {
     try {
         const response = await axios.delete(
             `/v1/posts/${id}`,
-            { headers: await getAuthHeader() }
+            { headers: await getAuthHeader() },
+             { auth: "bnVsbDpudWxs" }
         );
         console.log(response);
         return response.status;

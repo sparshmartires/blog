@@ -1,9 +1,11 @@
 import { UserModel } from '../models/User';
-
+var settings = require("./settings").Settings;
 
 exports.AuthenticateRequest = async function (req, res, next) {
 
-  console.log(req.user,'uhj');
+   var basicAuth = new Buffer(
+    settings.APP_KEY + ":" + settings.APP_SECRET
+  ).toString("base64");
 if(req.user){
     let email= req.user.data.email;
     let username=req.user.data.username;
@@ -11,7 +13,11 @@ if(req.user){
     console.log(user,'ufjinjkm');
      next();
 }
-  next();
+
+else if(req.auth != basicAuth){
+   next();
+}
+ 
   
 }
  

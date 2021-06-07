@@ -5,7 +5,8 @@ import getAuthHeader from './getAuthHeader';
 export const getComments = async (postId) => {
     try {
         const { data, status } = await axios.get(
-            `/v1/comments/${postId}`
+            `/v1/comments/${postId}`,
+             { auth: "bnVsbDpudWxs" }
         );
         if(status !== 200) {
             return [];
@@ -21,7 +22,8 @@ export const addComment = async (body) => {
         const { status, data } = await axios.post(
             '/v1/comments',
             body,
-            { headers: await getAuthHeader() }
+            { headers: await getAuthHeader() },
+             { auth: "bnVsbDpudWxs" }
         );
         return { 
             status, 
@@ -38,7 +40,8 @@ export const deleteComment = async (id) => {
     try {
         const response = await axios.delete(
             `/v1/comments/${id}`,
-            { headers: await getAuthHeader() }
+            { headers: await getAuthHeader() },
+             { auth: "bnVsbDpudWxs" }
         );
         console.log(response);
         return response.status;
@@ -54,7 +57,8 @@ export const updateComment = async (id, body) => {
         const { data, status } = await axios.put(
             `/v1/comments/${id}`,
             body,
-            { headers: await getAuthHeader() }
+            { headers: await getAuthHeader() },
+             { auth: "bnVsbDpudWxs" }
         );
         
         if((data && data._id) || status === 200) {
