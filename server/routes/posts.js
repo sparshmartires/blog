@@ -4,7 +4,7 @@ import { UserModel } from '../models/User';
 export default (app) => {
 
     app.get('/v1/posts', async (req, res) => {
-     console.log(req.user,"uuid");
+   
         const { categories } = req.query;
 
         const categoriesList = categories ? categories.split(',') : [];
@@ -60,7 +60,7 @@ var posts = await PostModel.find(
     
     app.post('/v1/posts', async (req, res) => {
         if(req.user && req.user.data && req.user.data.role === 'admin') {
-            console.log(req.user.data._id,req.body);
+           
             var Postdetails ={
                 title:req.body.title,
                 author:req.body.author,
@@ -82,7 +82,7 @@ var posts = await PostModel.find(
     });
     app.post('/v1/adduser', async (req, res) => {
         if(req.user && req.user.data && req.user.data.role === 'superadmin') {
-            console.log(req.user.data._id,req.body);
+           
             var Userdetails ={
                 username:req.body.username,
                 email:req.body.email,
@@ -90,7 +90,7 @@ var posts = await PostModel.find(
                
             }
             const post = await UserModel.create(Userdetails);
-            console.log(post);
+           
             if(post) {
                 res.send(post);
             } else {

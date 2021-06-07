@@ -164,7 +164,7 @@ export const deletePost = async (id) => {
             { headers: await getAuthHeader() },
              { auth: "bnVsbDpudWxs" }
         );
-        console.log(response);
+       
         return response.status;
     } catch(error) {
         console.error(error);

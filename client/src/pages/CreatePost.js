@@ -87,10 +87,10 @@ class CreatePost extends Component {
                 }}
                 onChange={this.handleBodyChange}
                 onBlur={(event, editor) => {
-                    console.log('Blur.', editor);
+                   
                 }}
                 onFocus={(event, editor) => {
-                    console.log('Focus.', editor);
+                  
                 }}
               />
 

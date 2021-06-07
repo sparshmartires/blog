@@ -12,7 +12,7 @@ export default class PostList extends React.Component {
             <div className="postList-box">
                 {
                     posts.map((post, index) => (
-                        console.log(post),
+                     
                         // <Link
                         //     key={post.getId()}
                         //     to={`/post/${post.getId()}`}

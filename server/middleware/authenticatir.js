@@ -10,7 +10,7 @@ if(req.user){
     let email= req.user.data.email;
     let username=req.user.data.username;
     const user = await UserModel.findOne({ email,username });
-    console.log(user,'ufjinjkm');
+   
      next();
 }
 

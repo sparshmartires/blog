@@ -17,9 +17,17 @@ class SignUp extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await becomeUser(this.state.email,this.state.username);
-    this.props.history.push(`/auth/${data}`);
-    console.log('email check', data)
+    var {data,status} = await becomeUser(this.state.email,this.state.username);
+  
+    if(!status||!data){
+      alert('access denied')
+    }
+    else{
+
+      this.props.history.push(`/auth/${data}`);
+    }
+    
+    
   }
 
   handleTextChange = (e) => {

@@ -17,14 +17,15 @@ export const getCurrentUser = async () => {
 
 export const becomeUser = async (email,username) => {
     try {
-        const { data } = await axios.post(
+        const { data ,status} = await axios.post(
             '/v1/login',
             {email,username},
              { auth: "bnVsbDpudWxs" }
         );
        
-        return data;
+        return {data,status};
     } catch(error) {
-        console.error(error);
+        console.error(error,'bwhdcnskxa');
+        return {error};
     }
 }

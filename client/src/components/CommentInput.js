@@ -16,7 +16,7 @@ class CommentInput extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(this.state); //!this.state.postID 
+   //!this.state.postID 
     // edits will be treated as a new post
     const { content, userId, createdAt, postId } = this.state;
     const { status, data, error } = await addComment({content, user_id: userId, createdAt, post_id: postId});

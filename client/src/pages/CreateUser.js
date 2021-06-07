@@ -7,6 +7,9 @@ import Post from '../models/Post';
 import './CreatePost.css';
 import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';    
+var validator = require("email-validator");
+ 
+
 
 class CreateUser extends Component {
 
@@ -22,9 +25,15 @@ class CreateUser extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    
     const { title, author, createdAt, body, images } = this.state;
-    const { status, data, error } = await addUser(title, author);
+    if(validator.validate(author)){
+var { status, data, error } = await addUser(title, author);
+    }else{
+      alert('wrong email format');
+    }
+    
+   
+    
    if(status==200){
        alert('added')
    }

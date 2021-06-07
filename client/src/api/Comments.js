@@ -43,7 +43,7 @@ export const deleteComment = async (id) => {
             { headers: await getAuthHeader() },
              { auth: "bnVsbDpudWxs" }
         );
-        console.log(response);
+       
         return response.status;
     } catch(error) {
         console.error(error);
